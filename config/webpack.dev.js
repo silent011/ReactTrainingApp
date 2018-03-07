@@ -16,7 +16,9 @@ module.exports = {
         contentBase: path.resolve(__dirname, '../public'),
         port: 5000,
         hot: true,
-        open: false
+        open: false,
+        overlay:true,
+        historyApiFallback: true
     },
     module:{
         rules: [

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render header correctly 1`] = `
+<header
+  className="header"
+>
+  <h1
+    className="header__title"
+  >
+    Hello this is the root component
+  </h1>
+</header>
+`;
