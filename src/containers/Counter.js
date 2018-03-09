@@ -4,14 +4,13 @@ import { connect } from 'react-redux'
 import { incrementByOne } from '../actions/count-actions'
 
 let custom = {
-    message: 'Hello from ownProps2'
+    message: 'Hello from ownProps'
 }
 
 
 let mapStateToProps = (state, ownProps) => {
-    console.log('own props', ownProps)
     return {
-        count: Object.assign({}, state.count),
+        count: state.count.count,
         message: custom.message
     }
 }
