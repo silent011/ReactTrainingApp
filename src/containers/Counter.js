@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { incrementByOne } from '../actions/count-actions'
 
 let custom = {
-    message: 'Hello from ownProps'
+    message: 'Hello from ownProps3'
 }
 
 
