@@ -7,6 +7,7 @@ let custom = {
     message: 'Hello from ownProps'
 }
 
+console.log('hi')
 
 let mapStateToProps = (state, ownProps) => {
     return {
