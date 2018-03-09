@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render the same initial ui 1`] = `
+<div>
+  <h2>
+    Counter page:
+  </h2>
+  <h2
+    id="count-value"
+  >
+    Count: 
+    0
+  </h2>
+  <button
+    onClick={[Function]}
+  >
+    Increment
+  </button>
+  <h3>
+    Hello from ownProps
+  </h3>
+</div>
+`;

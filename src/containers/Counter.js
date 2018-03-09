@@ -9,9 +9,8 @@ let custom = {
 
 
 let mapStateToProps = (state, ownProps) => {
-    console.log('own props', ownProps)
     return {
-        count: Object.assign({}, state.count),
+        count: state.count.count,
         message: custom.message
     }
 }
