@@ -2,7 +2,7 @@ import * as firebase from 'firebase'
 
 //insert your own firebase api keys here
 const config = {
-    
+
 }
 
 firebase.initializeApp(config)
