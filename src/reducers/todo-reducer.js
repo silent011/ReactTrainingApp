@@ -1,14 +1,19 @@
 import {types} from '../actions/toDoActions'
 
 const initialState = {
-    todos: []
+    todos: [],
+    ajaxCall: false,
+    ajaxResponse: {
+        success: false,
+        msg: ''
+    }
 }
 
 const todoReducer = (state = initialState, action) => {
     switch(action.type){
-        case types.ADD_TODO_LOCAL: {
-            let newState = Object.assign({}, state)
-            newState.todos.push(action.payload)
+        case types.ADDED_TODO: {
+            let newState = Object.assign({}, state, 
+                {ajaxResponse: action.payload, ajaxCall: false})
             return newState
         }
         case types.FETCHED_TODOS: {
@@ -21,6 +26,11 @@ const todoReducer = (state = initialState, action) => {
             })
             
             newState.todos = todos
+            return newState
+        }
+        case types.CLEAR_RESP_MESSAGE: {
+            let newState = Object.assign({}, state, 
+                {ajaxResponse: initialState.ajaxResponse})
             return newState
         }
         default: return state;

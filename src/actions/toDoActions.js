@@ -2,13 +2,18 @@ import db from '../firebase/firebase'
 import { database } from 'firebase';
 
 export const types = {
-    ADD_TODO_LOCAL: 'ADD_TODO_LOCAL',
-    FETCHED_TODOS: 'FETCHED_TODOS'
+    ADDED_TODO: 'ADDED_TODO',
+    FETCHED_TODOS: 'FETCHED_TODOS',
+    CLEAR_RESP_MESSAGE:'CLEAR_RESP_MESSAGE' 
 }
 
-export const addTodo = (todo) => ({
-    type: types.ADD_TODO_LOCAL,
-    payload: todo
+export const addedTodo = (response) => ({
+    type: types.ADDED_TODO,
+    payload: response
+})
+
+export const clearRespMessage = () => ({
+    type: types.CLEAR_RESP_MESSAGE
 })
 
 export const startAddTodo = (todoData = {}) => {
@@ -21,13 +26,15 @@ export const startAddTodo = (todoData = {}) => {
 
         const toDo = {title, description, dateAdded}
         db.ref('todos').push(toDo).then((ref) => {
-            dispatch(addTodo({ 
-                id:ref.key,
-                title, 
-                description,
-                dateAdded,
+            dispatch(addedTodo({
+                success: true,
+                msg: 'Successfully added Todo!'
             }))
         }).catch(error => {
+            dispatch(addedTodo({
+                success: false,
+                msg: 'Failed to add todo :('
+            }))
             console.log('firebase error', error)
         })
     }

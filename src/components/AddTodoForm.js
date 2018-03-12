@@ -26,7 +26,12 @@ class AddTodoForm extends Component {
         })
     }
 
-    componentDidUpdate(){
+    componentWillUpdate(nextProps){
+        if(nextProps.success)
+            this.props.history.push('/')
+    }
+
+    componentDidUpdate(nextProps){
         if(this.state.title && this.state.titleError){
             this.updateState('titleError', '')
         }

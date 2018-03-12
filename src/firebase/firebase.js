@@ -1,14 +1,21 @@
 import * as firebase from 'firebase'
 
-//insert your own firebase api keys here
-const config = {
-    apiKey: "AIzaSyDvOl8-SNCMk7rOcp5kRCDcwr-GCl7B9wU",
-    authDomain: "reactapp-2341d.firebaseapp.com",
-    databaseURL: "https://reactapp-2341d.firebaseio.com",
-    projectId: "reactapp-2341d",
-    storageBucket: "reactapp-2341d.appspot.com",
-    messagingSenderId: "194457179197" 
+const nodeEnv = process.env.NODE_ENV || 'development'
+let configFileName = {
+    test: 'firebase-test-config',
+    dev: 'firebase-dev-config'
 }
+//insert your own firebase api keys here
+let configNeeded = ''
+if(nodeEnv === 'test'){
+    configNeeded = configFileName.test
+} else if (nodeEnv === 'development') {
+    configNeeded = configFileName.dev
+} else if (nodeEnv === 'production') {
+    configNeeded = configFileName.dev
+}
+
+const config = require(`./${configNeeded}`)
 
 firebase.initializeApp(config)
 
