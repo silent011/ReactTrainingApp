@@ -1,7 +1,6 @@
 import React from 'react'
 
 let Counter = ({count, inc, message}) => {
-    console.log('count',count)
    return <div>
         <h2>Counter page:</h2>
         <h2 id="count-value">Count: {count}</h2>

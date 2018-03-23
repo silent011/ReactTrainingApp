@@ -4,7 +4,6 @@ class InfoBox extends Component {
 
     componentWillUpdate(nextProps) {
         if(nextProps.msg !== ''){
-            console.log('nextProps', nextProps)
             setTimeout(() => {
                 this.props.clearMessage()
             }, 3000);

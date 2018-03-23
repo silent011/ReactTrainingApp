@@ -25,11 +25,15 @@ export const startAddTodo = (todoData = {}) => {
         } = todoData
 
         const toDo = {title, description, dateAdded}
-        db.ref('todos').push(toDo).then((ref) => {
+        return db.ref('todos').push(toDo).then((ref) => {
             dispatch(addedTodo({
                 success: true,
                 msg: 'Successfully added Todo!'
             }))
+
+            return new Promise((resolve, reject) => {
+                resolve(ref)
+            })
         }).catch(error => {
             dispatch(addedTodo({
                 success: false,
@@ -42,12 +46,12 @@ export const startAddTodo = (todoData = {}) => {
 
 export const fetchTodos = () => {
     return dispatch => {
-        db.ref('todos').once('value').then((snapshot) => {
+        return db.ref('todos').once('value').then((snapshot) => {
             dispatch({
                 type:types.FETCHED_TODOS,
                 payload: snapshot.val()
             })
-            // console.log('snapshot', snapshot.val())
+        
         }).catch(e => {
             console.log('fetching error', e)
         })
